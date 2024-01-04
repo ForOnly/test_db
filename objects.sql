@@ -10,8 +10,8 @@ drop procedure if exists show_departments //
 --
 -- returns the department id of a given employee
 --
-create function emp_dept_id( employee_id int )
-returns char(4)
+create function emp_dept_id( employee_id bigint )
+returns bigint
 reads sql data
 begin
     declare max_date date;
@@ -41,7 +41,7 @@ end //
 -- returns the department name of a given employee
 --
 
-create function emp_dept_name( employee_id int )
+create function emp_dept_name( employee_id bigint )
 returns varchar(40)
 reads sql data
 begin
@@ -58,7 +58,7 @@ end//
 --
 -- returns the employee name of a given employee id
 --
-create function emp_name (employee_id int)
+create function emp_name (employee_id bigint)
 returns varchar(32)
 reads SQL data
 begin
@@ -77,7 +77,7 @@ end//
 -- choosing the most recent one
 -- from the manager list
 --
-create function current_manager( dept_id char(4) )
+create function current_manager( dept_id bigint )
 returns varchar(32)
 reads sql data
 begin
@@ -161,8 +161,8 @@ begin
 
     CREATE TEMPORARY TABLE department_people
     (
-        emp_no int not null,
-        dept_no char(4) not null,
+        emp_no bigint not null,
+        dept_no bigint not null,
         primary key (emp_no, dept_no)
     );
 
